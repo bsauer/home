@@ -3,11 +3,30 @@ echo "In .bash_profile"
 export REGULAR_IFS=$IFS
 export NEWLINE_IFS=$'\n'
 
+LANG="C"
+export EDITOR=vim
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+export HISTCONTROL=ignoreboth:erasedups
+
 # Always append history, not overwrite it.
 shopt -s histappend
-export PROMPT_COMMAND="history -a"
-export HISTCONTROL="ignorespace:ignoredups"
-export HISTFILESIZE="100000"
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+export HISTSIZE=
+export HISTFILESIZE=
+export HISTTIMEFORMAT="[%F %T] "
+export HISTFILE=~/.bash_eternal_history
+
+# Force prompt to write history after every command.
+# http://superuser.com/questions/20900/bash-history-loss
+export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 
 # Set timezone
 export TZ="America/Denver"

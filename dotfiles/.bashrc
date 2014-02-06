@@ -1,4 +1,5 @@
 echo "In .bashrc"
+export LANG="C"
 export CLICOLOR=1
 export LSCOLORS=ExFxCxDxBxegedabagacad
 
